@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nuclear energy curriculum</title>
+  <meta name="description" content="USA-first nuclear energy curriculum. Adult and kids tracks. Great Lakes map. Frozen to September 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="adult">
+  <a class="skip" href="#app">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="#/">
+      <small>Curriculum · Sept 2026</small>
+      <strong>Nuclear energy</strong>
+    </a>
+    <nav class="nav" id="nav" aria-label="Primary"></nav>
+    <div class="toggles">
+      <div class="toggle" role="group" aria-label="Reading level">
+        <button type="button" data-mode="adult">Adult</button>
+        <button type="button" data-mode="kids">Kids</button>
+      </div>
+    </div>
+  </header>
+  <main id="app"></main>
+  <footer class="site-footer">
+    <p>Static curriculum site. Statistics frozen September 2026. Palisades is restarting, not generating.</p>
+    <p>Sources: EIA, NRC, IAEA PRIS, UNSCEAR, Lazard LCOE ranges. Map tiles © OpenStreetMap.</p>
+    <p id="year"></p>
+  </footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="assets/content.js"></script>
+  <script src="assets/plants-embed.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
