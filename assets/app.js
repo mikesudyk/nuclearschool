@@ -122,8 +122,144 @@
       </section>`;
   }
 
+
+  function session1Visual() {
+    return `
+      <section class="cutaway" id="s1-cutaway">
+        <p class="kicker">${t("Plate I · Incredible cutaway", "Look inside")}</p>
+        <p class="lede" style="font-size:16px;margin:0 0 8px">${t(
+          "Same idea as a Biesty plate: slice the machine open, then make the hidden parts move. Tap a layer.",
+          "We cut the machine open. Tap a picture. Then move the rods."
+        )}</p>
+        <div class="plate-tabs" role="tablist">
+          <button type="button" data-plate="plant" aria-pressed="true">${t("The plant", "The plant")}</button>
+          <button type="button" data-plate="pellet">${t("Pellet to split", "Tiny pellet")}</button>
+          <button type="button" data-plate="core">${t("The core", "The pot")}</button>
+          <button type="button" data-plate="chain">${t("Chain + rods", "Dominos")}</button>
+        </div>
+
+        <div class="plate on" data-pane="plant">
+          <div class="plate-frame">
+            <img src="assets/plates/plant-cutaway.jpg" alt="${t("Cutaway of a Great Lakes pressurized-water plant: core, steam, turbine, wires, lake water.", "A power plant cut open by the lake.")}" />
+          </div>
+          <div class="hotspots" data-notes="plant">
+            <button type="button" data-note="core" aria-pressed="true">${t("Core", "Core")}</button>
+            <button type="button" data-note="rods">${t("Control rods", "Rods")}</button>
+            <button type="button" data-note="steam">${t("Steam generator", "Steam")}</button>
+            <button type="button" data-note="turbine">${t("Turbine + generator", "Spinning part")}</button>
+            <button type="button" data-note="lake">${t("Lake water", "Lake")}</button>
+            <button type="button" data-note="wires">${t("Wires out", "Wires")}</button>
+          </div>
+          <p class="plate-note" data-caption="plant">${t("Electricity is a side effect of heat. The core makes heat. Water carries it. Steam spins a turbine. A generator turns spin into current. Lake water takes leftover heat.", "Heat first. Steam next. Spin next. Wires last.")}</p>
+        </div>
+
+        <div class="plate" data-pane="pellet">
+          <div class="plate-frame">
+            <img src="assets/plates/pellet-fission.jpg" alt="${t("Three-scale cutaway: ceramic fuel pellet, atom with nucleus, nucleus splitting and throwing neutrons and heat.", "A pellet, an atom, and a split.")}" />
+          </div>
+          <p class="plate-note">${t("A pellet is fingertip-size ceramic uranium dioxide. Inside, some nuclei can split when a neutron hits. The split throws heat and more neutrons. That is fission. We do not need the algebra of a chain here — only the picture: one split can cause the next.", "A pellet is as small as a fingertip. Inside, a nucleus can split. Heat comes out. Tiny pieces called neutrons can hit the next atom.")}</p>
+        </div>
+
+        <div class="plate" data-pane="core">
+          <div class="plate-frame">
+            <img src="assets/plates/core-cutaway.jpg" alt="${t("Cutaway reactor vessel: fuel assemblies in water, control rods hanging above, heat leaving in pipes.", "The pot with fuel standing in water and rods above.")}" />
+          </div>
+          <p class="plate-note">${t("The core is a forest of fuel tubes standing in water. Water slows neutrons and carries heat. Control rods drop from above and soak up neutrons so the chain stays a walk, not a sprint.", "Fuel stands in water. Rods can drop in and catch the flying pieces so the chain does not run away.")}</p>
+        </div>
+
+        <div class="plate" data-pane="chain">
+          <div class="chain-board">
+            <svg viewBox="0 0 640 360" role="img" aria-label="${t("Animated chain reaction with movable control rods", "Moving picture of splits and rods")}" class="board" id="chain-svg">
+              <rect x="0" y="0" width="640" height="360" fill="#efe6d2"/>
+              <text x="24" y="32" font-family="Georgia, serif" font-size="16" fill="#1c1914">${t("Chain reaction — difference is control", "Splits that cause more splits")}</text>
+              <text x="24" y="52" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#4a453c">${t("Neutrons fly. Rods catch. Heat blooms when the chain is allowed.", "Move the slider. Watch the dots.")}</text>
+              <g class="heat-pulse" opacity="0.4">
+                <ellipse cx="200" cy="230" rx="70" ry="36" fill="#d7b15a"/>
+                <ellipse cx="440" cy="230" rx="70" ry="36" fill="#d7b15a"/>
+              </g>
+              <g fill="#7a5a32" stroke="#1c1914" stroke-width="2">
+                <rect x="160" y="190" width="28" height="110" rx="4"/>
+                <rect x="200" y="190" width="28" height="110" rx="4"/>
+                <rect x="400" y="190" width="28" height="110" rx="4"/>
+                <rect x="440" y="190" width="28" height="110" rx="4"/>
+              </g>
+              <g fill="#8b3a2a">
+                <circle cx="174" cy="230" r="9"/>
+                <circle cx="214" cy="250" r="9"/>
+                <circle cx="414" cy="230" r="9"/>
+                <circle cx="454" cy="250" r="9"/>
+              </g>
+              <g class="rods" fill="#2a2a28" stroke="#111" stroke-width="1">
+                <rect x="166" y="70" width="16" height="130" rx="2"/>
+                <rect x="206" y="70" width="16" height="130" rx="2"/>
+                <rect x="406" y="70" width="16" height="130" rx="2"/>
+                <rect x="446" y="70" width="16" height="130" rx="2"/>
+              </g>
+              <g fill="#1b4a56" stroke="#fff" stroke-width="1">
+                <circle class="n-dot" r="6" cx="80" cy="220"/>
+                <circle class="n-dot d2" r="6" cx="320" cy="220"/>
+                <circle class="n-dot d3" r="6" cx="200" cy="240"/>
+                <circle class="n-dot d4" r="6" cx="140" cy="260"/>
+              </g>
+              <text x="158" y="322" font-size="11" fill="#4a453c">${t("FUEL", "FUEL")}</text>
+              <text x="398" y="322" font-size="11" fill="#4a453c">${t("FUEL", "FUEL")}</text>
+              <text x="500" y="88" font-size="11" fill="#4a453c">${t("RODS", "RODS")}</text>
+            </svg>
+          </div>
+          <div class="rod-ctrl">
+            <label><span>${t("Control rods", "Rods")}</span><b id="rod-label">${t("halfway", "halfway")}</b></label>
+            <input id="rod-slider" type="range" min="0" max="100" value="35" />
+            <p class="plate-note" id="rod-note">${t("Slide right to drop the rods. Neutrons get caught. Heat quiets. That is a plant. A weapon is built so the chain cannot be walked back. This page does not teach that machine.", "Slide right. The rods drop. The flying pieces get caught. That is control.")}</p>
+          </div>
+        </div>
+      </section>`;
+  }
+
+  function bindCutaway() {
+    const root = document.getElementById("s1-cutaway");
+    if (!root) return;
+    const notes = {
+      core: t("The core is where nuclei split. It is a heat engine, not a lightning box.", "This is where atoms split and make heat."),
+      rods: t("Control rods soak up neutrons. Drop them and the chain slows. That is the difference between a plant and a runaway.", "Rods catch the flying pieces so the chain stays a walk."),
+      steam: t("In a PWR the reactor water stays inside its own loop. It heats a second loop of cleaner water into steam.", "Heat moves into other water and makes steam."),
+      turbine: t("Steam hits blades. The shaft spins a generator. After this point it is ordinary electricity.", "Steam spins a fan. The fan makes electricity."),
+      lake: t("Lake water is the dump for leftover heat. It is not the water that boiled on the fuel.", "The lake cools the leftover heat."),
+      wires: t("Wires leave the fence. Your house is on the grid, not on this site.", "Wires leave. Your house is not the plant.")
+    };
+    root.querySelectorAll("[data-plate]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        root.querySelectorAll("[data-plate]").forEach((b) => b.setAttribute("aria-pressed", "false"));
+        btn.setAttribute("aria-pressed", "true");
+        root.querySelectorAll("[data-pane]").forEach((pane) => pane.classList.toggle("on", pane.dataset.pane === btn.dataset.plate));
+      });
+    });
+    root.querySelectorAll("[data-note]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        root.querySelectorAll("[data-note]").forEach((b) => b.setAttribute("aria-pressed", "false"));
+        btn.setAttribute("aria-pressed", "true");
+        const cap = root.querySelector("[data-caption=plant]");
+        if (cap) cap.textContent = notes[btn.dataset.note];
+      });
+    });
+    const slider = document.getElementById("rod-slider");
+    const svg = document.getElementById("chain-svg");
+    const label = document.getElementById("rod-label");
+    const note = document.getElementById("rod-note");
+    const apply = () => {
+      if (!slider || !svg) return;
+      const v = Number(slider.value);
+      svg.classList.toggle("rods-in", v >= 55);
+      const rods = svg.querySelector(".rods");
+      if (rods) rods.style.transform = `translateY(${Math.round(v * 0.72)}px)`;
+      if (label) label.textContent = v < 25 ? t("mostly out — chain lively", "mostly out") : v < 65 ? t("halfway", "halfway") : t("in — chain quiet", "rods in");
+      if (note && v >= 70) note.textContent = t("Rods in. Neutrons get caught. Heat fades. This is how a plant is walked, not sprinted.", "Rods in. The flying pieces get caught. The heat calms down.");
+    };
+    slider?.addEventListener("input", apply);
+    apply();
+  }
+
   function extraFor(n) {
-    if (n === 1) return sliderBox();
+    if (n === 1) return session1Visual() + sliderBox();
     if (n === 4 || n === 6) return `<p><a class="pager" href="#/map" style="display:inline-block;margin-top:8px">${t("Open the Midwest map", "Open the lake map")}</a></p>`;
     if (n === 5) return `<p><a href="#/safety">${t("Open the three-accident comparator", "Compare the three accidents")}</a></p>`;
     if (n === 7) return costBoxes();
@@ -462,6 +598,7 @@
     else root.innerHTML = home();
 
     paintSlider();
+    bindCutaway();
     bindClaims();
     document.getElementById("do-print")?.addEventListener("click", () => window.print());
     if (section === "map" || section === "midwest") {

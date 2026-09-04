@@ -350,3 +350,93 @@ body.adult .kid-only { display: none; }
   .sheet { page-break-after: always; border: 0; box-shadow: none; }
   .card, .session-card { box-shadow: none; }
 }
+
+
+/* Session 1 Biesty plates */
+.cutaway {
+  margin: 22px 0 28px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px 14px 18px;
+  box-shadow: var(--shadow);
+}
+.plate-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0 12px; }
+.plate-tabs button {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  border-radius: 999px;
+  padding: 7px 12px;
+  cursor: pointer;
+  color: var(--ink-soft);
+}
+.plate-tabs button[aria-pressed="true"] {
+  background: var(--lake);
+  color: #f6f1e6;
+  border-color: var(--lake);
+}
+.plate { display: none; }
+.plate.on { display: block; }
+.plate-frame {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #e8dcc4;
+  border: 1px solid var(--line);
+}
+.plate-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.hotspots { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.hotspots button {
+  font-size: 12px;
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+  border-radius: 999px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.hotspots button[aria-pressed="true"] { background: var(--amber-2); }
+.plate-note {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: var(--ink-soft);
+  max-width: 42rem;
+}
+.chain-board {
+  background: #efe6d2;
+  border-radius: 10px;
+  padding: 8px;
+  border: 1px solid var(--line);
+}
+.chain-board svg { width: 100%; height: auto; display: block; }
+.rod-ctrl { margin-top: 12px; }
+.rod-ctrl label { display: flex; justify-content: space-between; font-size: 13px; }
+.n-dot { offset-path: path("M 80 220 C 140 80, 260 80, 320 220"); animation: fly 2.8s linear infinite; }
+.n-dot.d2 { animation-delay: -0.7s; offset-path: path("M 320 220 C 360 90, 500 90, 560 220"); }
+.n-dot.d3 { animation-delay: -1.4s; offset-path: path("M 200 240 C 280 120, 400 300, 480 220"); }
+.n-dot.d4 { animation-delay: -2.1s; offset-path: path("M 140 260 C 220 320, 420 60, 520 240"); }
+@keyframes fly {
+  0% { offset-distance: 0%; opacity: 0; }
+  8% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+.board.rods-in .n-dot { animation-duration: 5.5s; opacity: 0.35; }
+.board.rods-in .n-dot.caught { animation: none; opacity: 0; }
+.rods { transition: transform 0.6s ease; }
+.board.rods-in .rods { transform: translateY(62px); }
+.heat-pulse { transform-origin: center; animation: pulse 2.2s ease-in-out infinite; }
+.board.rods-in .heat-pulse { animation: none; opacity: 0.25; }
+@keyframes pulse {
+  0%, 100% { opacity: 0.25; transform: scale(0.92); }
+  50% { opacity: 0.7; transform: scale(1.08); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .n-dot, .heat-pulse { animation: none !important; }
+}
+@media print {
+  .cutaway { break-inside: avoid; }
+}
