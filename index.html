@@ -10,6 +10,9 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="preload" as="image" href="assets/plates/plant-cutaway.jpg" />
+  <link rel="preload" as="image" href="assets/plates/pellet-fission.jpg" />
+  <link rel="preload" as="image" href="assets/plates/core-cutaway.jpg" />
 </head>
 <body class="adult">
   <a class="skip" href="#app">Skip to content</a>
@@ -26,6 +29,11 @@
       </div>
     </div>
   </header>
+  <div class="plate-preload" aria-hidden="true">
+    <img src="assets/plates/plant-cutaway.jpg" alt="" width="1168" height="784" />
+    <img src="assets/plates/pellet-fission.jpg" alt="" width="1168" height="784" />
+    <img src="assets/plates/core-cutaway.jpg" alt="" width="784" height="1168" />
+  </div>
   <main id="app"></main>
   <footer class="site-footer">
     <p>Static curriculum site. Statistics frozen September 2026. Palisades is restarting, not generating.</p>

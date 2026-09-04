@@ -13,6 +13,12 @@
     selected: null
   };
 
+  function assetUrl(rel) {
+    const page = String(location.href).replace(/[?#].*$/, "");
+    const dir = page.replace(/[^/]*$/, "");
+    return dir + String(rel).replace(/^\//, "");
+  }
+
   function isKid() { return state.mode === "kids"; }
   function t(adult, kid) { return isKid() ? kid : adult; }
 
@@ -140,7 +146,7 @@
 
         <div class="plate on" data-pane="plant">
           <div class="plate-frame">
-            <img src="assets/plates/plant-cutaway.jpg" alt="${t("Cutaway of a Great Lakes pressurized-water plant: core, steam, turbine, wires, lake water.", "A power plant cut open by the lake.")}" />
+            <img src="${assetUrl("assets/plates/plant-cutaway.jpg")}" width="1168" height="784" loading="eager" decoding="async" alt="${t("Cutaway of a Great Lakes pressurized-water plant: core, steam, turbine, wires, lake water.", "A power plant cut open by the lake.")}" />
           </div>
           <div class="hotspots" data-notes="plant">
             <button type="button" data-note="core" aria-pressed="true">${t("Core", "Core")}</button>
@@ -155,14 +161,14 @@
 
         <div class="plate" data-pane="pellet">
           <div class="plate-frame">
-            <img src="assets/plates/pellet-fission.jpg" alt="${t("Three-scale cutaway: ceramic fuel pellet, atom with nucleus, nucleus splitting and throwing neutrons and heat.", "A pellet, an atom, and a split.")}" />
+            <img src="${assetUrl("assets/plates/pellet-fission.jpg")}" width="1168" height="784" loading="eager" decoding="async" alt="${t("Three-scale cutaway: ceramic fuel pellet, atom with nucleus, nucleus splitting and throwing neutrons and heat.", "A pellet, an atom, and a split.")}" />
           </div>
           <p class="plate-note">${t("A pellet is fingertip-size ceramic uranium dioxide. Inside, some nuclei can split when a neutron hits. The split throws heat and more neutrons. That is fission. We do not need the algebra of a chain here — only the picture: one split can cause the next.", "A pellet is as small as a fingertip. Inside, a nucleus can split. Heat comes out. Tiny pieces called neutrons can hit the next atom.")}</p>
         </div>
 
         <div class="plate" data-pane="core">
-          <div class="plate-frame">
-            <img src="assets/plates/core-cutaway.jpg" alt="${t("Cutaway reactor vessel: fuel assemblies in water, control rods hanging above, heat leaving in pipes.", "The pot with fuel standing in water and rods above.")}" />
+          <div class="plate-frame portrait">
+            <img src="${assetUrl("assets/plates/core-cutaway.jpg")}" width="784" height="1168" loading="eager" decoding="async" alt="${t("Cutaway reactor vessel: fuel assemblies in water, control rods hanging above, heat leaving in pipes.", "The pot with fuel standing in water and rods above.")}" />
           </div>
           <p class="plate-note">${t("The core is a forest of fuel tubes standing in water. Water slows neutrons and carries heat. Control rods drop from above and soak up neutrons so the chain stays a walk, not a sprint.", "Fuel stands in water. Rods can drop in and catch the flying pieces so the chain does not run away.")}</p>
         </div>
@@ -218,6 +224,14 @@
   function bindCutaway() {
     const root = document.getElementById("s1-cutaway");
     if (!root) return;
+    root.querySelectorAll("img").forEach((img) => {
+      img.addEventListener("error", () => {
+        img.replaceWith(Object.assign(document.createElement("p"), {
+          className: "plate-note",
+          textContent: t("Safari could not load this plate from " + img.getAttribute("src") + ". Hard-refresh, or open the site over https rather than from Files.", "Picture did not load. Refresh, or open the site in a browser tab from the web.")
+        }));
+      });
+    });
     const notes = {
       core: t("The core is where nuclei split. It is a heat engine, not a lightning box.", "This is where atoms split and make heat."),
       rods: t("Control rods soak up neutrons. Drop them and the chain slows. That is the difference between a plant and a runaway.", "Rods catch the flying pieces so the chain stays a walk."),

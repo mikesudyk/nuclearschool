@@ -383,11 +383,25 @@ body.adult .kid-only { display: none; }
   overflow: hidden;
   background: #e8dcc4;
   border: 1px solid var(--line);
+  aspect-ratio: 1168 / 784;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
+.plate-frame.portrait { aspect-ratio: 784 / 1168; }
 .plate-frame img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
   display: block;
+  background: #e8dcc4;
+}
+.plate-preload {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 .hotspots { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
 .hotspots button {
