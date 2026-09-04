@@ -390,18 +390,16 @@ body.adult .kid-only { display: none; }
 .plate-frame.portrait { aspect-ratio: 784 / 1168; }
 .plate-frame img {
   width: 100%;
-  height: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 52vh;
   object-fit: contain;
-  object-position: center;
+  object-position: center top;
   display: block;
   background: #e8dcc4;
 }
-.plate-preload {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+.plate-frame {
+  aspect-ratio: auto;
 }
 .hotspots { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
 .hotspots button {
